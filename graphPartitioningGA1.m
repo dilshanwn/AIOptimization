@@ -1,4 +1,4 @@
-function [bestEval,bestSoln] = graphPartitioning(A, psize,ga)
+function [bestEval,bestSoln] = graphPartitioningGA1(A, psize,ga,cr,mu)
 
 % A is the adjacency matrix of the graph to be partitioned
 % psize is the size of the population (set psize=1 if using simulated
@@ -54,8 +54,8 @@ fp2= fopen('time.txt','w');
     
     % here a fixed number of crossovers is chosen. Alternatively a
     % probability of crossover could be set using roulette wheel approach
-    numCrossOvers=floor(psize*0.5);
-    numMutations=floor(psize*0.1);
+    numCrossOvers=floor(psize*cr);
+    numMutations=floor(psize*mu);
     numMutations = max(numMutations, 1);
     
     
