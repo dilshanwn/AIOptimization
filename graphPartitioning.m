@@ -1,4 +1,4 @@
-function [bestEval,bestSoln] = graphPartitioning(A, psize,ga)
+function [bestEval,bestSoln] = graphPartitioning(A, psize,ga,al,gen)
 
 % A is the adjacency matrix of the graph to be partitioned
 % psize is the size of the population (set psize=1 if using simulated
@@ -25,8 +25,8 @@ function [bestEval,bestSoln] = graphPartitioning(A, psize,ga)
 
 % applyMutation : a function to apply a random mutation
 
-
-
+fp = fopen('besteval.txt','w');
+fp2= fopen('time.txt','w');
 
     N = size(A,1);
     
@@ -58,9 +58,9 @@ function [bestEval,bestSoln] = graphPartitioning(A, psize,ga)
     numMutations = max(numMutations, 1);
     
     
-    maxGenerations=100000; 
+    maxGenerations=gen; 
     maxChainLength=1000;
-    alpha=0.8;
+    alpha=al;
     
     
     itersWithoutImprovement=0;
@@ -77,7 +77,7 @@ function [bestEval,bestSoln] = graphPartitioning(A, psize,ga)
     % For simplicity, we'll just run the algorithm for some fixed number of
     % generations (iterations).  A more complex stopping criterion could be
     % used instead
-    
+    tic;
     bestEval = inf;
     for i=1:maxGenerations
         
@@ -125,11 +125,11 @@ function [bestEval,bestSoln] = graphPartitioning(A, psize,ga)
            markovChainLength=0;
         end
         
-        
-       % fprintf('%d\n',bestEval);
+       fprintf(fp2,'%f\n',toc); 
+       fprintf(fp,'%d\n',bestEval); 
     end
-
-        
+fclose(fp);
+fclose(fp2);        
     
                 
                     
