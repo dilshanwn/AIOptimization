@@ -38,22 +38,20 @@ for z=1:columns(MCL)
       t = (t1+t2+t3)/3;
 
       plot(q);
-      print( gcf, '-dpng', fullfile( outputPath,sprintf('Figure MCL Quality %d %d %d - %d - %d %d.png\n',i,j,k,100,0.99,100000) ) );
+      print( gcf, '-dpng', fullfile( outputPath,sprintf('Figure MCL %d Quality %d %d %d - %d - %d %d.png\n',MCL{z},i,j,k,100,0.99,100000) ) );
       pause(5);
 
 
       plot(t);
-      print( gcf, '-dpng', fullfile( outputPath,sprintf('Figure MCL Time %d %d %d - %d - %d %d.png\n',i,j,k,100,0.99,100000) ) );
+      print( gcf, '-dpng', fullfile( outputPath,sprintf('Figure MCL %d Time %d %d %d - %d - %d %d.png\n',MCL{z},i,j,k,100,0.99,100000) ) );
       pause(5);
 
 
       plot(t, q);
-      print( gcf, '-dpng', fullfile( outputPath,sprintf('Figure MCL Time Quality %d %d %d - %d - %d %d.png\n',i,j,k,100,0.99,100000) ) );
+      print( gcf, '-dpng', fullfile( outputPath,sprintf('Figure MCL %d Time Quality %d %d %d - %d - %d %d.png\n',MCL{z},i,j,k,100,0.99,100000) ) );
       pause(5);
       
   
   
   
 endfor
-
-
